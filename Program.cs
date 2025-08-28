@@ -55,6 +55,9 @@ public partial class App : Application
         // HttpClient'ı singleton olarak kaydet
         services.AddHttpClient();
 
+        // OllamaChat'i singleton olarak kaydet
+        services.AddSingleton<OllamaChat>();
+
         // Servisleri kaydet
         services.AddSingleton<CodeComparisonService>();
 

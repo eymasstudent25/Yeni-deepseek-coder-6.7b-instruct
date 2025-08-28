@@ -3,9 +3,9 @@
         xmlns:vm="using:MakroCompare1408.ViewModels"
         x:Class="MakroCompare1408.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Width="1000" Height="700"
+        Width="1200" Height="800"
         Title="Makro Kod Karşılaştırıcı"
-        Background="#F5F5F5">
+        Background="#F8F9FA">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -13,75 +13,96 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Başlık -->
-        <TextBlock Grid.Row="0" 
-                   Text="Makro Kod Karşılaştırıcı"
-                   FontSize="28"
-                   FontWeight="Bold"
-                   Foreground="#1976D2"
-                   TextAlignment="Center"
-                   Margin="0,0,0,20"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Makro Kod Karşılaştırıcı"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"
+                       TextAlignment="Center"/>
+            <TextBlock Text="DeepSeek Coder 6.7B-instruct ile AI Destekli Analiz"
+                       FontSize="14"
+                       Foreground="#7F8C8D"
+                       TextAlignment="Center"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
 
-        <!-- Kod Alanları -->
+        <!-- Ana İçerik -->
         <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="20">
+            
             <!-- Kod 1 -->
             <StackPanel Grid.Column="0" Spacing="10">
-                <TextBlock Text="Kod 1" FontWeight="Bold" Foreground="#388E3C" FontSize="16"/>
+                <TextBlock Text=" Kod 1" 
+                           FontWeight="Bold" 
+                           Foreground="#E74C3C" 
+                           FontSize="16"/>
                 <TextBox Text="{Binding Code1}" 
                          AcceptsReturn="True" 
-                         Height="200"
+                         Height="300"
                          Background="White"
-                         Foreground="#212121"
-                         BorderBrush="#BDBDBD"
-                         BorderThickness="1"
-                         CornerRadius="4"
+                         Foreground="#2C3E50"
+                         BorderBrush="#BDC3C7"
+                         BorderThickness="2"
+                         CornerRadius="8"
                          FontFamily="Consolas"
-                         FontSize="12"/>
+                         FontSize="12"
+                         Padding="10"/>
             </StackPanel>
 
             <!-- Kod 2 -->
             <StackPanel Grid.Column="1" Spacing="10">
-                <TextBlock Text="Kod 2" FontWeight="Bold" Foreground="#388E3C" FontSize="16"/>
+                <TextBlock Text=" Kod 2" 
+                           FontWeight="Bold" 
+                           Foreground="#E74C3C" 
+                           FontSize="16"/>
                 <TextBox Text="{Binding Code2}" 
                          AcceptsReturn="True" 
-                         Height="200"
+                         Height="300"
                          Background="White"
-                         Foreground="#212121"
-                         BorderBrush="#BDBDBD"
-                         BorderThickness="1"
-                         CornerRadius="4"
+                         Foreground="#2C3E50"
+                         BorderBrush="#BDC3C7"
+                         BorderThickness="2"
+                         CornerRadius="8"
                          FontFamily="Consolas"
-                         FontSize="12"/>
+                         FontSize="12"
+                         Padding="10"/>
             </StackPanel>
 
             <!-- Sonuçlar -->
             <StackPanel Grid.Column="2" Spacing="10">
-                <TextBlock Text="Sonuçlar" FontWeight="Bold" Foreground="#F57C00" FontSize="16"/>
+                <TextBlock Text=" Sonuçlar" 
+                           FontWeight="Bold" 
+                           Foreground="#27AE60" 
+                           FontSize="16"/>
                 <Border Background="White" 
-                        BorderBrush="#FFB74D" 
-                        BorderThickness="1" 
-                        CornerRadius="4" 
+                        BorderBrush="#27AE60" 
+                        BorderThickness="2" 
+                        CornerRadius="8" 
                         Padding="15">
-                    <StackPanel Spacing="8">
+                    <StackPanel Spacing="12">
                         <TextBlock Text="{Binding ResultText}" 
-                                   Foreground="#E65100"
+                                   Foreground="#2C3E50"
                                    FontSize="14"
                                    FontWeight="Medium"
                                    TextWrapping="Wrap"/>
                         
                         <Separator Margin="0,10"/>
                         
-                        <TextBlock Text="Detaylı Sonuçlar:" FontWeight="Bold" Foreground="#F57C00"/>
+                        <TextBlock Text="Detaylı Sonuçlar:" 
+                                   FontWeight="Bold" 
+                                   Foreground="#27AE60"/>
                         <TextBlock Text="{Binding SyntaxSimilarity, StringFormat='Yazım: %{0:F1}'}" 
-                                   Foreground="#388E3C"/>
+                                   Foreground="#E74C3C"
+                                   FontWeight="Medium"/>
                         <TextBlock Text="{Binding LogicalSimilarity, StringFormat='Mantıksal: %{0:F1}'}" 
-                                   Foreground="#1976D2"/>
+                                   Foreground="#3498DB"
+                                   FontWeight="Medium"/>
                         <TextBlock Text="{Binding OverallSimilarity, StringFormat='Genel: %{0:F1}'}" 
-                                   Foreground="#F57C00" 
-                                   FontWeight="Bold"/>
+                                   Foreground="#27AE60" 
+                                   FontWeight="Bold"
+                                   FontSize="16"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -91,56 +112,44 @@
         <StackPanel Grid.Row="2" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
-                    Spacing="15"
-                    Margin="0,20">
+                    Spacing="20"
+                    Margin="0,30">
             <Button Command="{Binding CompareCodesCommand}"
                     Content="Karşılaştır"
-                    Padding="20,10"
+                    Padding="30,15"
                     FontWeight="Bold"
-                    Background="#1976D2"
+                    FontSize="16"
+                    Background="#3498DB"
                     Foreground="White"
-                    CornerRadius="4"
+                    CornerRadius="8"
                     IsEnabled="{Binding CanInteract}"/>
             
             <Button Command="{Binding ClearAllCommand}"
                     Content="Temizle"
-                    Padding="20,10"
-                    Background="#757575"
+                    Padding="30,15"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Background="#95A5A6"
                     Foreground="White"
-                    CornerRadius="4"
+                    CornerRadius="8"
                     IsEnabled="{Binding CanInteract}"/>
         </StackPanel>
 
-        <!-- İşlem Durumu -->
+        <!-- Durum -->
         <StackPanel Grid.Row="3" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
-                    Spacing="10"
-                    Margin="0,10">
-            <TextBlock Text="⏳ İşleniyor..." 
+                    Spacing="15"
+                    Margin="0,20">
+            <TextBlock Text="İşleniyor..." 
                        IsVisible="{Binding IsProcessing}"
-                       Foreground="#F57C00"
-                       FontWeight="Medium"
-                       FontSize="14"/>
-        </StackPanel>
-
-        <!-- Analiz -->
-        <StackPanel Grid.Row="4" Spacing="10" Margin="0,20,0,0">
-            <TextBlock Text="Analiz" 
-                       FontWeight="Bold" 
-                       Foreground="#1565C0" 
+                       Foreground="#F39C12"
+                       FontWeight="Bold"
                        FontSize="16"/>
-            <ScrollViewer Height="150" 
-                          Background="White" 
-                          BorderBrush="#BDBDBD" 
-                          BorderThickness="1" 
-                          CornerRadius="4">
-                <TextBlock Text="{Binding DetailedAnalysis}" 
-                           Foreground="#424242"
-                           FontSize="13"
-                           TextWrapping="Wrap"
-                           Margin="10"/>
-            </ScrollViewer>
+            <TextBlock Text=" AI Modeli: DeepSeek Coder 6.7B-instruct" 
+                       Foreground="#7F8C8D"
+                       FontWeight="Medium"
+                       FontSize="12"/>
         </StackPanel>
     </Grid>
 </Window>

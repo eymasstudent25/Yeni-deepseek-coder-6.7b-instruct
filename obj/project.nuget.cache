@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s0EfWlUX9ro=",
+  "dgSpecHash": "uumn/OkZWyU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\makrocompare1408\\MakroCompare1408.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\Yeni-deepseek-coder-6.7b-instruct\\MakroCompare1408.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\avalonia\\11.3.3\\avalonia.11.3.3.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.25547.20250602\\avalonia.angle.windows.natives.2.1.25547.20250602.nupkg.sha512",

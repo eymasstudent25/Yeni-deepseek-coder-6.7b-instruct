@@ -20,13 +20,8 @@ public partial class MainWindowViewModel : ViewModelBase
     private string _resultText = string.Empty;
 
     [ObservableProperty]
-    private string _detailedAnalysis = string.Empty;
-
-    [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanInteract))]
     private bool _isProcessing = false;
-
-    public bool CanInteract => !IsProcessing;
 
     [ObservableProperty]
     private double _syntaxSimilarity = 0;
@@ -36,6 +31,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]
     private double _overallSimilarity = 0;
+
+    public bool CanInteract => !IsProcessing;
 
     public MainWindowViewModel(CodeComparisonService comparisonService)
     {
@@ -56,20 +53,27 @@ public partial class MainWindowViewModel : ViewModelBase
             IsProcessing = true;
             ResultText = "Kodlar karşılaştırılıyor...";
 
+            // Model kontrolü
+            if (!await _comparisonService.IsModelAvailable())
+            {
+                ResultText = "Hata: DeepSeek modeli bulunamadı. Ollama'nın çalıştığından ve modelin yüklü olduğundan emin olun.";
+                return;
+            }
+
             var result = await _comparisonService.CompareCodesAsync(Code1, Code2);
 
             SyntaxSimilarity = result.SyntaxSimilarity;
             LogicalSimilarity = result.LogicalSimilarity;
             OverallSimilarity = result.OverallSimilarity;
-            DetailedAnalysis = result.DetailedAnalysis;
 
-            ResultText = $"Yazım Benzerliği: %{SyntaxSimilarity:F1}\n" +
-                        $"Mantıksal Benzerlik: %{LogicalSimilarity:F1}\n" +
-                        $"Genel Benzerlik: %{OverallSimilarity:F1}";
+            ResultText = $"✅ Karşılaştırma Tamamlandı!\n\n" +
+                        $"📝 Yazım Benzerliği: %{SyntaxSimilarity:F1}\n" +
+                        $"🧠 Mantıksal Benzerlik: %{LogicalSimilarity:F1}\n" +
+                        $"📊 Genel Benzerlik: %{OverallSimilarity:F1}";
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            ResultText = "Karşılaştırma sırasında bir hata oluştu.";
+            ResultText = $"❌ Hata: {ex.Message}";
         }
         finally
         {
@@ -83,7 +87,6 @@ public partial class MainWindowViewModel : ViewModelBase
         Code1 = string.Empty;
         Code2 = string.Empty;
         ResultText = string.Empty;
-        DetailedAnalysis = string.Empty;
         SyntaxSimilarity = 0;
         LogicalSimilarity = 0;
         OverallSimilarity = 0;

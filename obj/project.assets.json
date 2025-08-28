@@ -2255,11 +2255,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\makrocompare1408\\MakroCompare1408.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\Yeni-deepseek-coder-6.7b-instruct\\MakroCompare1408.csproj",
       "projectName": "MakroCompare1408",
-      "projectPath": "C:\\Users\\user\\Desktop\\makrocompare1408\\MakroCompare1408.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\Yeni-deepseek-coder-6.7b-instruct\\MakroCompare1408.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\makrocompare1408\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\Yeni-deepseek-coder-6.7b-instruct\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"

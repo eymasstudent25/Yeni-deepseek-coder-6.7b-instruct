@@ -5,14 +5,15 @@ namespace MakroCompare1408.Views;
 
 public partial class MainWindow : Window
 {
-	public MainWindow()
-	{
-		InitializeComponent();
-	}
+    // Designer için parameterless constructor
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
 
-	public MainWindow(MainWindowViewModel viewModel)
-	{
-		InitializeComponent();
-		DataContext = viewModel;
-	}
+    public MainWindow(MainWindowViewModel viewModel)
+    {
+        InitializeComponent();
+        DataContext = viewModel;
+    }
 }

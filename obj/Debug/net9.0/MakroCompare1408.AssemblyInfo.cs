@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MakroCompare1408")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35f1a234f0afa9b3c27d4e0c453a22b41ee5b478")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecbdbe8abb170eb5256332f095f2e17aafcb72e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MakroCompare1408")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MakroCompare1408")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
